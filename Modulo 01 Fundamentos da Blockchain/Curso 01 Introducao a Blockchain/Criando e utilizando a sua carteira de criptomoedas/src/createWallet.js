@@ -22,7 +22,10 @@ let root = bip32.fromSeed(seed, network)
 let account = root.derivePath(path)
 let node = account.derive(0).derive(0)
 
-let btcAddress = bitcoin.payments.p2pkh({
+//Pay-to-Witness-Public-Key-Hash (P2WPKH)
+// is the first of two address types introduced
+// to bitcoin upon the SegWit soft fork in August 2017.
+let btcAddress = bitcoin.payments.p2wpkh({
     pubkey: node.publicKey,
     network: network,
 }).address
